@@ -1,8 +1,8 @@
-const express = require("express");
-const cors = require("cors");
+const cors = require('cors');
+const express = require('express');
 
-const routes = require("./routes");
-const { logRequests } = require("./middleware");
+const routes = require('./routes');
+const { logRequests } = require('./middleware');
 
 const app = express();
 

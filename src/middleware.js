@@ -1,6 +1,6 @@
-const { isUuid } = require("uuidv4");
+const { isUuid } = require('uuidv4');
 
-const { repositories } = require("./controller");
+const { repositories } = require('./controller');
 
 const logRequests = (request, response, next) => {
   const { method, url } = request;
@@ -13,12 +13,12 @@ const validateRepositoryId = (request, response, next) => {
   const { id } = request.params;
 
   if (!isUuid(id)) {
-    return response.status(400).json({ error: "Invalid repository ID." });
+    return response.status(400).json({ error: 'Invalid repository ID.' });
   }
 
-  const repositoryIndex = repositories.findIndex((r) => r.id === id);
+  const repositoryIndex = repositories.findIndex(r => r.id === id);
   if (repositoryIndex < 0) {
-    return response.status(400).json({ error: "Repository not found." });
+    return response.status(400).json({ error: 'Repository not found.' });
   }
 
   request.repositoryIndex = repositoryIndex;

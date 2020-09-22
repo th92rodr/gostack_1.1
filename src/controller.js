@@ -1,14 +1,14 @@
-const { uuid } = require("uuidv4");
+const { uuid } = require('uuidv4');
 
 const repositories = [];
 
 const index = (request, response) => {
-  console.log("repositories: ", repositories);
   return response.status(200).json(repositories);
 };
 
 const store = (request, response) => {
   const { title, url, techs } = request.body;
+
   const repository = {
     id: uuid(),
     title,
@@ -16,8 +16,8 @@ const store = (request, response) => {
     techs,
     likes: 0,
   };
+
   repositories.push(repository);
-  console.log("new repository: ", repository);
   return response.status(200).json(repository);
 };
 
@@ -41,7 +41,6 @@ const update = (request, response) => {
     url,
     techs,
   };
-  console.log("updated repository: ", repositories[repositoryIndex]);
 
   return response.status(200).json(repositories[repositoryIndex]);
 };
